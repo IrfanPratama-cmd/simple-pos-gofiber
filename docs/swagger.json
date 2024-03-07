@@ -1,0 +1,3199 @@
+{
+    "schemes": [
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "API Documentation",
+        "title": "User Services",
+        "termsOfService": "https://dospecs.monstercode.net/en/guide/tnc.html",
+        "contact": {
+            "name": "Irfan Pratama",
+            "email": "erfanpratama321@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1/",
+    "paths": {
+        "/": {
+            "get": {
+                "description": "show basic response",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "API"
+                ],
+                "summary": "show basic response",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "bad request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "not found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "internal error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/Customers/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete Customer by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Delete Customer by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Customer ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/login": {
+            "post": {
+                "security": [
+                    {
+                        "TokenKey": []
+                    }
+                ],
+                "description": "Generate token",
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Generate token",
+                "parameters": [
+                    {
+                        "description": "Payload",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.LoginAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Logedin",
+                        "schema": {
+                            "$ref": "#/definitions/model.LoginAPI"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/register": {
+            "post": {
+                "security": [
+                    {
+                        "TokenKey": []
+                    }
+                ],
+                "description": "Registration",
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Registration",
+                "parameters": [
+                    {
+                        "description": "Payload",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.RegistrationAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registered",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/send-verify-account-code": {
+            "post": {
+                "security": [
+                    {
+                        "TokenKey": []
+                    }
+                ],
+                "description": "Resend Code Verify account",
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Resend Code Verify account",
+                "parameters": [
+                    {
+                        "description": "Payload",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.SendVerificationAccountAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Account verified",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserAPI"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/account/verify-account": {
+            "post": {
+                "security": [
+                    {
+                        "TokenKey": []
+                    }
+                ],
+                "description": "Verify account",
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Verify account",
+                "parameters": [
+                    {
+                        "description": "Payload",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.VerificationAccountAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Account verified",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserAPI"
+                        }
+                    },
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/brands": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List of Brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Brand"
+                ],
+                "summary": "List of Brand",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page number start from zero",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Size per page, default `0`",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by field, adding dash (`-`) at the beginning means descending and vice versa",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Select specific fields with comma separated",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "custom filters, see [more details](https://github.com/morkid/paginate#filter-format)",
+                        "name": "filters",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Brand",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/lib.Page"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Brand"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new Brand",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Brand"
+                ],
+                "summary": "Create new Brand",
+                "parameters": [
+                    {
+                        "description": "Brand data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.BrandAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Brand data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Brand"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/brands/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get a Brand by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Brand"
+                ],
+                "summary": "Get a Brand by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Brand ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Brand data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Brand"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update Brand by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Brand"
+                ],
+                "summary": "Update Brand by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Brand ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Brand data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.BrandAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Brand data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Brand"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete Brand by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Brand"
+                ],
+                "summary": "Delete Brand by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Brand ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/carts": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List of Cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "List of Cart",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page number start from zero",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Size per page, default `0`",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by field, adding dash (`-`) at the beginning means descending and vice versa",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Select specific fields with comma separated",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "custom filters, see [more details](https://github.com/morkid/paginate#filter-format)",
+                        "name": "filters",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Cart",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/lib.Page"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Cart"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new Cart",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Create new Cart",
+                "parameters": [
+                    {
+                        "description": "Cart data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CartRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Cart data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Cart"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/carts/{id}": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update Cart by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Update Cart by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cart ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Cart data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CartUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cart data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Cart"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete Cart by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cart"
+                ],
+                "summary": "Delete Cart by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cart ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List of Category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "List of Category",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page number start from zero",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Size per page, default `0`",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by field, adding dash (`-`) at the beginning means descending and vice versa",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Select specific fields with comma separated",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "custom filters, see [more details](https://github.com/morkid/paginate#filter-format)",
+                        "name": "filters",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Category",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/lib.Page"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Category"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new Category",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Create new Category",
+                "parameters": [
+                    {
+                        "description": "Category data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CategoryAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Category data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get a Category by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get a Category by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Category ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update Category by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Update Category by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Category ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Category data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CategoryAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Category data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Category"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete Category by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Delete Category by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Category ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/customers": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List of Customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "List of Customer",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page number start from zero",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Size per page, default `0`",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by field, adding dash (`-`) at the beginning means descending and vice versa",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Select specific fields with comma separated",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "custom filters, see [more details](https://github.com/morkid/paginate#filter-format)",
+                        "name": "filters",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Customer",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/lib.Page"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Customer"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new Customer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Create new Customer",
+                "parameters": [
+                    {
+                        "description": "Customer data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CustomerAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Customer data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/customers/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get a Customer by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Get a Customer by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Customer ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update Customer by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Customer"
+                ],
+                "summary": "Update Customer by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Customer ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Customer data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.CustomerAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Customer data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Customer"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/info.json": {
+            "get": {
+                "description": "show info response",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "API"
+                ],
+                "summary": "show info response",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "bad request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "not found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "internal error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/payments/{transaction_id}": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create Payment Transaction by Transaction id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Payment"
+                ],
+                "summary": "Create Payment Transaction by Transaction id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Transaction ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Payment Link Response",
+                        "schema": {
+                            "$ref": "#/definitions/model.PaymentLinkResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List of Product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "List of Product",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page number start from zero",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Size per page, default `0`",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by field, adding dash (`-`) at the beginning means descending and vice versa",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Select specific fields with comma separated",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "custom filters, see [more details](https://github.com/morkid/paginate#filter-format)",
+                        "name": "filters",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Product",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/lib.Page"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Product"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new Product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Create new Product",
+                "parameters": [
+                    {
+                        "description": "Product data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ProductRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Product data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/products/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get a Product by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Get a Product by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update Product by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Update Product by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Product data",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.ProductAPI"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Product"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete Product by id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Product"
+                ],
+                "summary": "Delete Product by id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Product ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/transactions": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List of Transaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "List of Transaction",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page number start from zero",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Size per page, default `0`",
+                        "name": "size",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort by field, adding dash (`-`) at the beginning means descending and vice versa",
+                        "name": "sort",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Select specific fields with comma separated",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "custom filters, see [more details](https://github.com/morkid/paginate#filter-format)",
+                        "name": "filters",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of Transaction",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/lib.Page"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "items": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/model.Transaction"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create new Transaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction"
+                ],
+                "summary": "Create new Transaction",
+                "responses": {
+                    "201": {
+                        "description": "Transaction data",
+                        "schema": {
+                            "$ref": "#/definitions/model.Transaction"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflict",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/lib.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "lib.Page": {
+            "type": "object",
+            "properties": {
+                "first": {
+                    "description": "indicate first value",
+                    "type": "boolean",
+                    "example": true
+                },
+                "items": {
+                    "type": "object"
+                },
+                "last": {
+                    "description": "indicate last value",
+                    "type": "boolean",
+                    "example": false
+                },
+                "max_page": {
+                    "description": "maximum pages for current schema",
+                    "type": "integer",
+                    "example": 9
+                },
+                "page": {
+                    "description": "current page, start from zero",
+                    "type": "integer",
+                    "example": 0
+                },
+                "size": {
+                    "description": "size per page, default `10`",
+                    "type": "integer",
+                    "example": 10
+                },
+                "total": {
+                    "description": "total data without filters",
+                    "type": "integer",
+                    "example": 100
+                },
+                "total_pages": {
+                    "description": "total pages",
+                    "type": "integer",
+                    "example": 10
+                },
+                "visible": {
+                    "description": "current length",
+                    "type": "integer",
+                    "example": 10
+                }
+            }
+        },
+        "lib.Response": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "description": "response message",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "http status",
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Asset": {
+            "type": "object",
+            "properties": {
+                "absolute_path": {
+                    "description": "AbsolutePath",
+                    "type": "string",
+                    "example": "image.png"
+                },
+                "creator_id": {
+                    "description": "creator id",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "description": {
+                    "description": "Description",
+                    "type": "string",
+                    "example": "string"
+                },
+                "file_path": {
+                    "description": "File Path",
+                    "type": "string"
+                },
+                "file_size": {
+                    "description": "File Size",
+                    "type": "number",
+                    "format": "float"
+                },
+                "filename": {
+                    "description": "Filename",
+                    "type": "string",
+                    "example": "image.png"
+                },
+                "modifier_id": {
+                    "description": "modifier id",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "original_filename": {
+                    "description": "OriginalFilename",
+                    "type": "string",
+                    "example": "image.png"
+                },
+                "relative_path": {
+                    "description": "RelativePath",
+                    "type": "string",
+                    "example": "image.png"
+                },
+                "title": {
+                    "description": "Title",
+                    "type": "string",
+                    "example": "Image"
+                }
+            }
+        },
+        "model.Brand": {
+            "type": "object",
+            "required": [
+                "brand_code",
+                "brand_name"
+            ],
+            "properties": {
+                "brand_code": {
+                    "type": "string",
+                    "example": "XM"
+                },
+                "brand_name": {
+                    "type": "string",
+                    "example": "Iphone"
+                }
+            }
+        },
+        "model.BrandAPI": {
+            "type": "object",
+            "required": [
+                "brand_code",
+                "brand_name"
+            ],
+            "properties": {
+                "brand_code": {
+                    "type": "string",
+                    "example": "XM"
+                },
+                "brand_name": {
+                    "type": "string",
+                    "example": "Iphone"
+                }
+            }
+        },
+        "model.Cart": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "$ref": "#/definitions/model.Customer"
+                },
+                "customer_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "product": {
+                    "$ref": "#/definitions/model.Product"
+                },
+                "product_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "qty": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CartRequest": {
+            "type": "object",
+            "properties": {
+                "customer_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "product_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "qty": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.CartUpdate": {
+            "type": "object",
+            "properties": {
+                "qty": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Category": {
+            "type": "object",
+            "required": [
+                "category_code",
+                "category_name"
+            ],
+            "properties": {
+                "category_code": {
+                    "type": "string",
+                    "example": "HP"
+                },
+                "category_name": {
+                    "type": "string",
+                    "example": "Handphone"
+                }
+            }
+        },
+        "model.CategoryAPI": {
+            "type": "object",
+            "required": [
+                "category_code",
+                "category_name"
+            ],
+            "properties": {
+                "category_code": {
+                    "type": "string",
+                    "example": "HP"
+                },
+                "category_name": {
+                    "type": "string",
+                    "example": "Handphone"
+                }
+            }
+        },
+        "model.Customer": {
+            "type": "object",
+            "required": [
+                "customer_name"
+            ],
+            "properties": {
+                "address": {
+                    "description": "Address",
+                    "type": "string",
+                    "example": "Jl. Aria Putra No.88, RT.09/RW.01, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15414"
+                },
+                "alternate_number": {
+                    "description": "Alternate Number",
+                    "type": "string",
+                    "example": "08123456789"
+                },
+                "city_id": {
+                    "description": "City ID",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "creator_id": {
+                    "description": "creator id",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "customer_name": {
+                    "description": "customer Name                                                                                // Type",
+                    "type": "string",
+                    "example": "Walk-in-customers"
+                },
+                "email": {
+                    "description": "Email",
+                    "type": "string",
+                    "example": "walk-in-customer@mail.com"
+                },
+                "mobile": {
+                    "description": "Mobile",
+                    "type": "string",
+                    "example": "08123456789"
+                },
+                "modifier_id": {
+                    "description": "modifier id",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "province_id": {
+                    "description": "Province ID",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "subdistrict_id": {
+                    "description": "Subdistrict ID",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "user": {
+                    "$ref": "#/definitions/model.User"
+                },
+                "user_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "website": {
+                    "description": "Website",
+                    "type": "string",
+                    "example": "www.walk-in-customer.com"
+                },
+                "zip_code": {
+                    "description": "Zip Code",
+                    "type": "string",
+                    "example": "15414"
+                }
+            }
+        },
+        "model.CustomerAPI": {
+            "type": "object",
+            "required": [
+                "customer_name"
+            ],
+            "properties": {
+                "address": {
+                    "description": "Address",
+                    "type": "string",
+                    "example": "Jl. Aria Putra No.88, RT.09/RW.01, Sawah Baru, Kec. Ciputat, Kota Tangerang Selatan, Banten 15414"
+                },
+                "alternate_number": {
+                    "description": "Alternate Number",
+                    "type": "string",
+                    "example": "08123456789"
+                },
+                "city_id": {
+                    "description": "City ID",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "customer_name": {
+                    "description": "customer Name                                                                                // Type",
+                    "type": "string",
+                    "example": "Walk-in-customers"
+                },
+                "email": {
+                    "description": "Email",
+                    "type": "string",
+                    "example": "walk-in-customer@mail.com"
+                },
+                "mobile": {
+                    "description": "Mobile",
+                    "type": "string",
+                    "example": "08123456789"
+                },
+                "province_id": {
+                    "description": "Province ID",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "subdistrict_id": {
+                    "description": "Subdistrict ID",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "user_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "website": {
+                    "description": "Website",
+                    "type": "string",
+                    "example": "www.walk-in-customer.com"
+                },
+                "zip_code": {
+                    "description": "Zip Code",
+                    "type": "string",
+                    "example": "15414"
+                }
+            }
+        },
+        "model.LoginAPI": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "example": "@Password123"
+                },
+                "remember": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "username": {
+                    "type": "string",
+                    "example": "john.doe@mail.com"
+                }
+            }
+        },
+        "model.PaymentLinkResponse": {
+            "type": "object",
+            "properties": {
+                "checkout_link": {
+                    "type": "string",
+                    "example": "https://checkout-staging.xendit.co/latest/65a0eaaa63346762f641c28a"
+                }
+            }
+        },
+        "model.Product": {
+            "type": "object",
+            "required": [
+                "description",
+                "product_name"
+            ],
+            "properties": {
+                "brand": {
+                    "$ref": "#/definitions/model.Brand"
+                },
+                "brand_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "category": {
+                    "$ref": "#/definitions/model.Category"
+                },
+                "category_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Samsung Desc"
+                },
+                "price": {
+                    "type": "number",
+                    "example": 10000
+                },
+                "product_asset": {
+                    "$ref": "#/definitions/model.ProductAsset"
+                },
+                "product_name": {
+                    "type": "string",
+                    "example": "Samsung"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "sku": {
+                    "type": "string",
+                    "example": "PR6900000007"
+                }
+            }
+        },
+        "model.ProductAPI": {
+            "type": "object",
+            "required": [
+                "description",
+                "product_name"
+            ],
+            "properties": {
+                "brand_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "category_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Samsung Desc"
+                },
+                "price": {
+                    "type": "number",
+                    "example": 10000
+                },
+                "product_name": {
+                    "type": "string",
+                    "example": "Samsung"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "sku": {
+                    "type": "string",
+                    "example": "PR6900000007"
+                }
+            }
+        },
+        "model.ProductAsset": {
+            "type": "object",
+            "properties": {
+                "file_name": {
+                    "type": "string"
+                },
+                "file_path": {
+                    "type": "string"
+                },
+                "is_primary": {
+                    "type": "boolean"
+                },
+                "product_id": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        },
+        "model.ProductRequest": {
+            "type": "object",
+            "required": [
+                "description",
+                "product_name"
+            ],
+            "properties": {
+                "brand_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "category_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Samsung Desc"
+                },
+                "price": {
+                    "type": "number",
+                    "example": 10000
+                },
+                "product_asset": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProductAsset"
+                    }
+                },
+                "product_name": {
+                    "type": "string",
+                    "example": "Samsung"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "example": 10
+                }
+            }
+        },
+        "model.RegistrationAPI": {
+            "type": "object",
+            "required": [
+                "confirm_password",
+                "email",
+                "fullname",
+                "password"
+            ],
+            "properties": {
+                "confirm_password": {
+                    "type": "string",
+                    "example": "@Password123"
+                },
+                "email": {
+                    "type": "string",
+                    "example": "john.doe@mail.com"
+                },
+                "fullname": {
+                    "type": "string",
+                    "example": "John doe"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 8,
+                    "example": "@Password123"
+                },
+                "referral_code": {
+                    "type": "string",
+                    "example": "E6So5no5"
+                }
+            }
+        },
+        "model.SendVerificationAccountAPI": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "john.doe@mail.com"
+                }
+            }
+        },
+        "model.Transaction": {
+            "type": "object",
+            "properties": {
+                "customer": {
+                    "$ref": "#/definitions/model.Customer"
+                },
+                "customer_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "invoice_no": {
+                    "type": "string",
+                    "example": "INV-000000000000072270623"
+                },
+                "total_amount": {
+                    "type": "number",
+                    "example": 127000
+                },
+                "transaction_date": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "transaction_detail": {
+                    "$ref": "#/definitions/model.TransactionDetail"
+                },
+                "transaction_status": {
+                    "type": "string",
+                    "example": "pending"
+                },
+                "transaction_type": {
+                    "type": "string",
+                    "example": "cash"
+                }
+            }
+        },
+        "model.TransactionDetail": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "number"
+                },
+                "customer": {
+                    "$ref": "#/definitions/model.Customer"
+                },
+                "customer_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "product": {
+                    "$ref": "#/definitions/model.Product"
+                },
+                "product_id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "qty": {
+                    "type": "integer"
+                },
+                "total_amount": {
+                    "type": "number"
+                },
+                "transaction": {
+                    "$ref": "#/definitions/model.Transaction"
+                },
+                "transaction_id": {
+                    "type": "string",
+                    "format": "uuid"
+                }
+            }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "activated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "asset": {
+                    "$ref": "#/definitions/model.Asset"
+                },
+                "asset_id": {
+                    "type": "string"
+                },
+                "creator_id": {
+                    "description": "creator id",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fullname": {
+                    "type": "string"
+                },
+                "is_activated": {
+                    "type": "boolean"
+                },
+                "is_owner": {
+                    "type": "boolean"
+                },
+                "is_password_system_generated": {
+                    "type": "boolean"
+                },
+                "last_login": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "modifier_id": {
+                    "description": "modifier id",
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "otp_enabled": {
+                    "type": "boolean"
+                },
+                "otp_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "password_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "password_last_change": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "reset_password_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verification_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "model.UserAPI": {
+            "type": "object",
+            "properties": {
+                "activated_at": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "asset_id": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fullname": {
+                    "type": "string"
+                },
+                "is_activated": {
+                    "type": "boolean"
+                },
+                "is_owner": {
+                    "type": "boolean"
+                },
+                "is_password_system_generated": {
+                    "type": "boolean"
+                },
+                "last_login": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "otp_enabled": {
+                    "type": "boolean"
+                },
+                "otp_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "password_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "password_last_change": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "reset_password_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "verification_expiration": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "model.VerificationAccountAPI": {
+            "type": "object",
+            "required": [
+                "email",
+                "verification_code"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "john.doe@mail.com"
+                },
+                "verification_code": {
+                    "type": "string",
+                    "example": "7085"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        },
+        "TokenKey": {
+            "type": "apiKey",
+            "name": "x-Token",
+            "in": "header"
+        }
+    }
+}
