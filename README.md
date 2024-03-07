@@ -185,6 +185,12 @@ swag init
 
 Access local swagger ui documentation after running docker : http://localhost:8080/
 
+### User Account
+```
+email : admin@gmail.com
+password : password
+```
+
 ### Filter, Sorting, and Pagination Library
 
 Click this github link to see details and examples https://github.com/morkid/paginate
