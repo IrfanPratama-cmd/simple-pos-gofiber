@@ -156,7 +156,7 @@ CREATE TABLE [payment](
 SMTP_USERNAME=your-email@gmail.com
 SMTP_PASSWORD=app-password
 SMTP_HOST=smtp.gmail.com
-SMT_PORT=587
+SMTP_PORT=587
 ```
 
 
